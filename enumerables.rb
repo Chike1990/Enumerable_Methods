@@ -21,4 +21,8 @@ module Enumerable
       end
       self
       end
+   # [1,2,3,4,5].my_each_with_index {|index ,number| p index *2}
+  #%w[Chike emmy 123 erasmus cake].my_each_with_index {|x| puts "hello #{x}"}
+
+ 
 end
