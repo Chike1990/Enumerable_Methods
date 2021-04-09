@@ -24,5 +24,14 @@ module Enumerable
    # [1,2,3,4,5].my_each_with_index {|index ,number| p index *2}
   #%w[Chike emmy 123 erasmus cake].my_each_with_index {|x| puts "hello #{x}"}
 
- 
+  
+  def my_select
+    return enum_for(:my_select) unless block_given?
+    arr = []
+    to_a.my_each { |n| arr.push(n) if yield(n) }
+    arr
+   end
+ end
+
+#[8,2,5,1,6,3].my_select{|n| n if  p n == }
 end
