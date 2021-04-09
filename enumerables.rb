@@ -12,4 +12,5 @@ module Enumerable
 
     [1,2,3,4,5].my_each {|number| p number*number}
     [1,2,3,4,5].my_each { puts 'Chike & Erasmus' }
+    
 end
