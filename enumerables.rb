@@ -31,7 +31,6 @@ module Enumerable
     to_a.my_each { |n| arr.push(n) if yield(n) }
     arr
    end
- end
+end
 
  #[8,2,5,1,6,3].my_select{|n| n if  p n == }
-end
