@@ -32,12 +32,11 @@ module Enumerable
     arr = []
     to_a.my_each { |n| arr.push(n) if yield(n) }
     arr
-    end
   end
- # [8,2,5,1,6,3].my_select{|n| n if  p n == }
 
+  def my_all?
+    # code
+  end
+end
 
-def my_all
-  #some code/block
-end
-end
+# [8,2,5,1,6,3].my_select{|n| n if  p n == }
