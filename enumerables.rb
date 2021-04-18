@@ -53,4 +53,21 @@ module Enumerable
 
   # [5,5,5].my_all? {|p| puts "The cond is #{p}"}
   # [9,3,3,9].my_all? {|p| puts "The cond is #{p}"}
+
+  def my_any?(param = nil)
+    if block_given?
+      to_a.my_each { |n| return true if yield(n) }
+    elsif param.nil?
+      to_a.my_each { |n| return true if n }
+    elsif !param.nil? && (param.is_a? Class)
+      to_a.my_each { |n| return true if [n.class, n.class.superclass, n.class.superclass].include?(param) }
+    elsif !param.nil? && (param.is_a? Regexp)
+      to_a.my_each { |n| return true if n.match(param) }
+    else
+      to_a.my_each { |n| return true if n == param }
+    end
+    false
+  end
+
+  # [5,3,6,9,3,11,1].my_any? {|q| puts "We have numbers #{q} here"}
 end
