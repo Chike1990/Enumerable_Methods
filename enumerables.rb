@@ -54,7 +54,7 @@ module Enumerable
   # [5,5,5].my_all? {|p| puts "The cond is #{p}"}
   # [9,3,3,9].my_all? {|p| puts "The cond is #{p}"}
 
-  def my_any?(param)
+  def my_any?(param = nil)
     if block_given?
       to_a.my_each { |n| return true if yield(n) }
     elsif param.nil?
