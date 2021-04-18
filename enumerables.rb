@@ -34,9 +34,23 @@ module Enumerable
     arr
   end
 
-  def my_all?
-    # code
-  end
-end
+  # [8,2,5,1,6,3].my_select{|n| puts "number greater than 6 #{n}"}
 
-# [8,2,5,1,6,3].my_select{|n| n if  p n == }
+  def my_all?(param = nil)
+    if block_given?
+      to_a.my_each { |n| return false unless yield(n) }
+    elsif param.nil?
+      to_a.my_each { |n| return false if !n || n.nil? }
+    elsif !param.nil? && (param.is_a? Class)
+      to_a.my_each { |n| return false unless [n.class, n.class.superclass, n.class.superclass].include?(param) }
+    elsif !param.nil? && (param.is_a? Regexp)
+      to_a.my_each { |n| return false unless n.match(param) }
+    else
+      to_a.my_each { |n| return false unless n == param }
+    end
+    true
+  end
+
+  # [5,5,5].my_all? {|p| puts "The cond is #{p}"}
+  # [9,3,3,9].my_all? {|p| puts "The cond is #{p}"}
+end
