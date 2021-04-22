@@ -70,4 +70,23 @@ module Enumerable
   end
 
   # [5,3,6,9,3,11,1].my_any? {|q| puts "We have numbers #{q} here"}
+
+  def my_none?(param = nil)
+    if block_given?
+      my_each { |n| return false if yield(n) }
+    elsif param.nil?
+      to_a.my_each { |n| return false if n }
+    elsif !param.nil? && (param.is_a? Class)
+      my_each { |n| return false if [n.class, n.class.superclass, n.class.superclass].include?(param) }
+    elsif !param.nil? && (param.is_a? Regexp)
+      my_each { |n| return false if n.match(param) }
+    else
+      my_each { |n| return false if n == param }
+    end
+    true
+  end
+
+ [5,5,5,5].my_none? {|p| puts "The condition is #{p}"}
+ [9,4,2,9].my_none? {|p| puts "The condition is #{p}"}
+
 end
