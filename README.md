@@ -4,9 +4,7 @@
 In this repository we rebuilt a couple of handy iterator methods that is used to iterate through an array or hashes.They include my_each, my_each_with_index, my_select, my_all? my_any? my_none?, my_count, my_map, my_inject
 
 
-Built With
-
-
+Built With:
 Ruby, VS Code, Git and GitHub
 
 Getting Started
