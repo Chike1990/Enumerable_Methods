@@ -22,10 +22,10 @@ module Enumerable
     self
   end
 
-#my_each_with_index
-  [1,2,3,4,5].my_each_with_index {|index , number| p index *2}
-  %w[Chike emmy 123 erasmus cake].my_each_with_index {|x, y| puts "hello #{x}"}
- 
+  # my_each_with_index
+  [1, 2, 3, 4, 5].my_each_with_index { |index, _number| p index * 2 }
+  %w[Chike emmy 123 erasmus cake].my_each_with_index { |x, _y| puts "hello #{x}" }
+
   def my_select
     return enum_for(:my_select) unless block_given?
 
@@ -115,7 +115,6 @@ module Enumerable
     end
     result
   end
-
 end
 # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/ModuleLength
 
