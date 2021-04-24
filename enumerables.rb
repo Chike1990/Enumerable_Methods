@@ -101,5 +101,16 @@ module Enumerable
   counter
 end
 
+def my_map(proc = nil)
+  return enum_for(:my_map, proc) unless !proc.nil? || block_given?
+  arr = []
+  if proc.nil?
+    to_a.my_each { |item| arr << yield(item) }
+  else
+    to_a.my_each { |item| arr << proc.call(item) }
+  end
+  arr
+end
+
 
 end
