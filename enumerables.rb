@@ -112,5 +112,17 @@ def my_map(proc = nil)
   arr
 end
 
+def my_inject(result = nil, symbol = nil)
+  if (result.is_a?(Symbol) || result.is_a?(String)) && (!result.nil? && symbol.nil?)
+    symbol = result
+    result = nil
+  end
+  if !block_given? && !symbol.nil?
+    to_a.my_each { |n| result = result.nil? ? n : result.send(symbol, n) }
+  else
+    to_a.my_each { |n| result = result.nil? ? n : yield(result, n) }
+  end
+  result
+end
 
 end
