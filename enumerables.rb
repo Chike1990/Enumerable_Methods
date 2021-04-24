@@ -86,7 +86,20 @@ module Enumerable
     true
   end
 
- [5,5,5,5].my_none? {|p| puts "The condition is #{p}"}
- [9,4,2,9].my_none? {|p| puts "The condition is #{p}"}
+ #[5,5,5,5].my_none? {|p| puts "The condition is #{p}"}
+ #[9,4,2,9].my_none? {|p| puts "The condition is #{p}"}
+
+ def my_count(param = nil)
+  counter = 0
+  if block_given?
+    my_each { |n| counter += 1 if yield(n) }
+  elsif param.nil?
+    my_each { |_n| counter += 1 }
+  else
+    my_each { |n| counter += 1 if n == param }
+  end
+  counter
+end
+
 
 end
