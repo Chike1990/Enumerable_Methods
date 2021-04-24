@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/ModuleLength
 module Enumerable
   def my_each
     return enum_for(:my_each) unless block_given?
@@ -115,3 +116,4 @@ module Enumerable
     arr.my_inject(:*)
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/ModuleLength
