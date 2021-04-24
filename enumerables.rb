@@ -9,10 +9,7 @@ module Enumerable
     end
     self
   end
-
-  # [1,2,3,4,5].my_each {|number| p number*number}
-  # [1,2,3,4,5].my_each { puts 'Chike & Erasmus' }
-
+  
   def my_each_with_index
     return enum_for(:my_each_with_index) unless block_given?
 
@@ -23,9 +20,7 @@ module Enumerable
     end
     self
   end
-  # [1,2,3,4,5].my_each_with_index {|index ,number| p index *2}
-  # %w[Chike emmy 123 erasmus cake].my_each_with_index {|x| puts "hello #{x}"}
-
+  
   def my_select
     return enum_for(:my_select) unless block_given?
 
@@ -33,9 +28,7 @@ module Enumerable
     to_a.my_each { |n| arr.push(n) if yield(n) }
     arr
   end
-
-  # [8,2,5,1,6,3].my_select{|n| puts "number greater than 6 #{n}"}
-
+  
   def my_all?(param = nil)
     if block_given?
       to_a.my_each { |n| return false unless yield(n) }
@@ -50,10 +43,7 @@ module Enumerable
     end
     true
   end
-
-  # [5,5,5].my_all? {|p| puts "The cond is #{p}"}
-  # [9,3,3,9].my_all? {|p| puts "The cond is #{p}"}
-
+  
   def my_any?(param = nil)
     if block_given?
       to_a.my_each { |n| return true if yield(n) }
@@ -68,9 +58,7 @@ module Enumerable
     end
     false
   end
-
-  # [5,3,6,9,3,11,1].my_any? {|q| puts "We have numbers #{q} here"}
-
+  
   def my_none?(param = nil)
     if block_given?
       my_each { |n| return false if yield(n) }
@@ -85,10 +73,7 @@ module Enumerable
     end
     true
   end
-
- #[5,5,5,5].my_none? {|p| puts "The condition is #{p}"}
- #[9,4,2,9].my_none? {|p| puts "The condition is #{p}"}
-
+  
  def my_count(param = nil)
   counter = 0
   if block_given?
@@ -123,6 +108,10 @@ def my_inject(result = nil, symbol = nil)
     to_a.my_each { |n| result = result.nil? ? n : yield(result, n) }
   end
   result
+end
+
+def multiply_els(arr)
+  arr.my_inject(:*)
 end
 
 end
