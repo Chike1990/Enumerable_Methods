@@ -23,9 +23,9 @@ module Enumerable
     self
   end
 
-  
+  # Testing my_each_with_index
   (0..5).my_each_with_index { |x, y| p x if y.even? }
-  { fruit: 'banana', phone: 'apple'}.my_each_with_index { |hash, index| puts hash if index == 1 }
+  { fruit: 'banana', phone: 'apple' }.my_each_with_index { |hash, index| puts hash if index == 1 }
 
   def my_select
     return enum_for(:my_select) unless block_given?
