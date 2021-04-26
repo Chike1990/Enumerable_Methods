@@ -16,15 +16,16 @@ module Enumerable
 
     i = 0
     while i < to_a.length
-      yield(to_a[i])
+      yield(to_a[i], i)
       i += 1
     end
+
     self
   end
 
-  # my_each_with_index
-  [1, 2, 3, 4, 5].my_each_with_index { |index, _number| p index * 2 }
-  %w[Chike emmy 123 erasmus cake].my_each_with_index { |x, _y| puts "hello #{x}" }
+  
+  (0..5).my_each_with_index { |x, y| p x if y.even? }
+  { fruit: 'banana', phone: 'apple'}.my_each_with_index { |hash, index| puts hash if index == 1 }
 
   def my_select
     return enum_for(:my_select) unless block_given?
