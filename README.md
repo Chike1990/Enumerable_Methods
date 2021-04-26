@@ -7,15 +7,6 @@
 - Ruby
 - VS Code
 - Git and GitHub
-
-## Live Demo
-
-[Live Demo Link](n/a)
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
 - VSCode
